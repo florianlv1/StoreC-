@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f7zKZg6Hn9o=",
+  "dgSpecHash": "xyCGPEwiwCw=",
   "success": true,
-  "projectFilePath": "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/StoreWebApplication.csproj",
+  "projectFilePath": "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/StoreWebApplication.csproj",
   "expectedPackageFiles": [
     "/Users/florian/.nuget/packages/azure.core/1.47.1/azure.core.1.47.1.nupkg.sha512",
     "/Users/florian/.nuget/packages/azure.identity/1.14.2/azure.identity.1.14.2.nupkg.sha512",

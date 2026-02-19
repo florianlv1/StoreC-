@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/StoreWebApplication.csproj": {}
+    "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/StoreWebApplication.csproj": {}
   },
   "projects": {
-    "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/StoreWebApplication.csproj": {
+    "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/StoreWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/StoreWebApplication.csproj",
+        "projectUniqueName": "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/StoreWebApplication.csproj",
         "projectName": "StoreWebApplication",
-        "projectPath": "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/StoreWebApplication.csproj",
+        "projectPath": "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/StoreWebApplication.csproj",
         "packagesPath": "/Users/florian/.nuget/packages/",
-        "outputPath": "/Users/florian/RiderProjects/StoreWebApplication/StoreC#/StoreWebApplication/obj/",
+        "outputPath": "/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/florian/.nuget/NuGet/NuGet.Config"
