@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using StoreWebApplication.Data;
+using StoreWebApplication.DataAccess.Data;
 using StoreWebApplication.Models;
 
 namespace StoreWebApplication.Controllers;

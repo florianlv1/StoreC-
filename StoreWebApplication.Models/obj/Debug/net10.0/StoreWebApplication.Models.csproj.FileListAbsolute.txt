@@ -1,0 +1,12 @@
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/bin/Debug/net10.0/StoreWebApplication.Models.deps.json
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/bin/Debug/net10.0/StoreWebApplication.Models.dll
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/bin/Debug/net10.0/StoreWebApplication.Models.pdb
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.GeneratedMSBuildEditorConfig.editorconfig
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.AssemblyInfoInputs.cache
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.AssemblyInfo.cs
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.csproj.CoreCompileInputs.cache
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.sourcelink.json
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.dll
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/refint/StoreWebApplication.Models.dll
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/StoreWebApplication.Models.pdb
+/Users/florian/RiderProjects/StoreWebApplication/StoreWebApplication/StoreWebApplication.Models/obj/Debug/net10.0/ref/StoreWebApplication.Models.dll

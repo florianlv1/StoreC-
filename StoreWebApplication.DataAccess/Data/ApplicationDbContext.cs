@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StoreWebApplication.Models;
 
-namespace StoreWebApplication.Data;
+namespace StoreWebApplication.DataAccess.Data;
 
 public class ApplicationDbContext: DbContext
 {
