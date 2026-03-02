@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StoreWebApplication.Data;
+using StoreWebApplication.DataAccess.Data;
 
 #nullable disable
 
-namespace StoreWebApplication.Migrations
+namespace StoreWebApplication.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260207215840_InitialCreate")]
