@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432" # Maps port 5432 on your Mac to port 5432 in the container
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: "storeDB"
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  pgdata:
