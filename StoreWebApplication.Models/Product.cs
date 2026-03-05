@@ -1,0 +1,43 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace StoreWebApplication.Models;
+
+public class Product
+{
+    [Key]
+    public int Id { get; set; }
+    
+    [MaxLength(50)]
+    [Required]
+    public string Title { get; set; }
+    
+    [Required]
+    public string ISBN { get; set; }
+    
+    [Required]
+    public string Author { get; set; }
+    
+    public string Description { get; set; }
+    
+    [Required]
+    [DisplayName("List Price")]
+    [Range(1, 1000)]
+    public double ListPrice { get; set; }
+    
+    [Required]
+    [DisplayName("Price 1-50")]
+    [Range(1, 1000)]
+    public double Price { get; set; }
+    
+    [Required]
+    [DisplayName("Price 50+")]
+    [Range(1, 1000)]
+    public double Price50 { get; set; }
+    
+    [Required]
+    [DisplayName("Price for 100+")]
+    [Range(1, 1000)]
+    public double Price100 { get; set; }
+
+}

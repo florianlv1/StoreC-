@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StoreWebApplication.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8537842d57f4353375bcf4faa9b961db4a5d639a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+942314f4f77d7b1ebf90e6eb9f6e2669d32d2436")]
 [assembly: System.Reflection.AssemblyProductAttribute("StoreWebApplication.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StoreWebApplication.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
