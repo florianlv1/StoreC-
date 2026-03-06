@@ -874,6 +874,7 @@
       "type": "package",
       "path": "microsoft.build.framework/18.0.2",
       "files": [
+        ".DS_Store",
         ".nupkg.metadata",
         ".signature.p7s",
         "MSBuild-NuGet-Icon.png",
@@ -2205,6 +2206,7 @@
       "type": "package",
       "path": "microsoft.extensions.dependencymodel/10.0.3",
       "files": [
+        ".DS_Store",
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
