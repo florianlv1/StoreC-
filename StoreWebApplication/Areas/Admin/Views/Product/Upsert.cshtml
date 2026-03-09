@@ -1,4 +1,6 @@
 @model ProductVM;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
@@ -28,10 +30,9 @@
                     <label asp-for="Product.Author" class="ms-2"></label>
                     <span asp-validation-for="Product.Author" class="text-danger"></span>
                 </div>
-                <div class="form-floating py-2 col-12">
+                <div class=" py-2 col-12">
+                    <label asp-for="Product.Description" class="ms-2 text-muted"></label>
                     <textarea asp-for="Product.Description" class="form-control border-0 shadow"></textarea>
-                    <label asp-for="Product.Description" class="ms-2"></label>
-                    <span asp-validation-for="Product.Description" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
                     <input asp-for="Product.ListPrice" class="form-control border-0 shadow"/>
@@ -94,23 +95,17 @@
 
 @section Scripts
 {
+    <script>
+  tinymce.init({
+    selector: 'textarea', // This targets all textareas on the page
+    plugins: 'lists table help wordcount',
+    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | removeformat'
+  });
+</script>
+    
     @{
         <partial name ="_ValidationScriptsPartial"></partial>
     }
-    
-    <script>
-    // 1. Select the form (it's the only <form> in this view)
-    const productForm = document.querySelector('form');
-
-    productForm.addEventListener('submit', function (e) {
-        // 2. Log a simple message
-        console.log("Submit triggered! Sending data to the server...");
-
-        // 3. Optional: Log a specific value from the form
-        const title = document.querySelector('input[name="Product.Title"]').value;
-        console.log("Product Title being sent: " + title);
-    });
-</script>
     
     
 }
