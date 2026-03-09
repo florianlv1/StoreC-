@@ -1,5 +1,8 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using StoreWebApplication.Models;
+using StoreWebApplication.Models.ViewModels;
 using StoreWebApplication.Repository.IRepository;
 
 namespace StoreWebApplication.Areas.Admin.Controllers;
@@ -15,59 +18,60 @@ public class ProductController : Controller
     public IActionResult Index()
     {
         List<Product> objProductList = _unitOfWork.ProductRepository.GetAll().ToList();
+        IEnumerable<SelectListItem> CategoryList = _unitOfWork.CategoryRepository.GetAll()
+            .Select(u=>
+                new SelectListItem
+                {
+                    Text = u.Name, 
+                    Value = u.Id.ToString()
+                    
+                });
         
         return View(objProductList);
     }
 
-    public IActionResult Create()
+    public IActionResult UpSert(int? id)
     {
-        return View();
-    }
-    
-
-    
-    [HttpPost]
-    public IActionResult Create(Product product)
-    {
-        if (product.Title == "1234")
+        IEnumerable<SelectListItem> CategoryList = _unitOfWork.CategoryRepository.GetAll()
+            .Select(u=>
+                new SelectListItem
+                {
+                    Text = u.Name, 
+                    Value = u.Id.ToString()
+                    
+                });
+        
+        ProductVM productVM = new()
         {
-            ModelState.AddModelError("Title", "The Title cannot be 1234");
-        }
+            CategoryList = CategoryList,
+            Product = new Product()
+        };
 
-        if (ModelState.IsValid)
-        {
-            _unitOfWork.ProductRepository.Add(product);
-            _unitOfWork.Save();
-            TempData["Message"] = "Product created successfully";
-            return RedirectToAction("Index", "Product");
-
-        }
-
-        return View();
-    }
-    
-    public IActionResult Edit(int? id)
-    {
         if (id == null || id == 0)
         {
-            return NotFound(); 
+            //create
+            return View(productVM);
         }
-        Product product = _unitOfWork.ProductRepository.Get(u=>u.Id==id);
-        if (product == null)
+        else
         {
-            return NotFound();
+            //update
+            productVM.Product = _unitOfWork.ProductRepository.Get(u => u.Id == id);
+            return View(productVM);
         }
-        return View(product);
+        
+        return View(productVM);
     }
     
+
+    
     [HttpPost]
-    public IActionResult Edit(Product product)
+    public IActionResult Upsert(ProductVM obj, IFormFile? file)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.ProductRepository.Update(product);
+            _unitOfWork.ProductRepository.Add(obj.Product);
             _unitOfWork.Save();
-            TempData["Message"] = "Product updated successfully";
+            TempData["Message"] = "Product created successfully";
             return RedirectToAction("Index", "Product");
 
         }
@@ -87,7 +91,20 @@ public class ProductController : Controller
         {
             return NotFound();
         }
-        return View(product);
+        
+        ProductVM productVM = new()
+        {
+            CategoryList =  _unitOfWork.CategoryRepository.GetAll()
+                .Select(u=>
+                    new SelectListItem
+                    {
+                        Text = u.Name, 
+                        Value = u.Id.ToString()
+                    
+                    }),
+            Product = product
+        };
+        return View(productVM);
     }
 
     [HttpPost, ActionName("Delete")]

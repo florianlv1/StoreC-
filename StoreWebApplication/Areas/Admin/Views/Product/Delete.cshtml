@@ -1,4 +1,4 @@
-@model Product
+@model ProductVM
 
 <div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
@@ -13,40 +13,53 @@
             <div class="border p-3 mt-4">
                 <div asp-validation-summary="All"></div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Title" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Title" class="ms-2"></label>
+                    <input asp-for="Product.Title" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Title" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="ISBN" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="ISBN" class="ms-2"></label>
+                    <input asp-for="Product.ISBN" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.ISBN" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Author" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Author" class="ms-2"></label>
+                    <input asp-for="Product.Author" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Author" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Category.Name" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Category.Name" class="ms-2"></label>
+                    <input asp-for="Product.Category.Name" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Category.Name" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <textarea asp-for="Description" disabled class="form-control border-0 shadow"></textarea>
-                    <label asp-for="Description" class="ms-2"></label>
+                    <textarea asp-for="Product.Description" disabled class="form-control border-0 shadow"></textarea>
+                    <label asp-for="Product.Description" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="ListPrice" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="ListPrice" class="ms-2"></label>
+                    <input asp-for="Product.ListPrice" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.ListPrice" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Price" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Price" class="ms-2"></label>
+                    <input asp-for="Product.Price" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Price" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Price50" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Price50" class="ms-2"></label>
+                    <input asp-for="Product.Price50" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Price50" class="ms-2"></label>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Price100" disabled class="form-control border-0 shadow"/>
-                    <label asp-for="Price100" class="ms-2"></label>
+                    <input asp-for="Product.Price100" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.Price100" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Product.ImageUrl" disabled class="form-control border-0 shadow"/>
+                    <label asp-for="Product.ImageUrl" class="ms-2"></label>
+                    <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList"  
+                            disabled class="form-select border-0 shadow">
+                        <option disabled selected>--Select Category--</option>
+                    </select>
+                    <label asp-for="Product.CategoryId" class="ms-2"></label>
+                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
                 </div>
                 <div class="row pt-2">
                     <div class="col-6 col-md-3">
