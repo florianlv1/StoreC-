@@ -11,21 +11,19 @@ namespace StoreWebApplication.Areas.Admin.Controllers;
 public class ProductController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
-    public ProductController(IUnitOfWork unitOfWork)
+    private readonly IWebHostEnvironment _webHostEnvironment;
+    
+    public ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
     {
         _unitOfWork = unitOfWork;
+        _webHostEnvironment = webHostEnvironment;
     }
+    
     public IActionResult Index()
     {
-        List<Product> objProductList = _unitOfWork.ProductRepository.GetAll().ToList();
-        IEnumerable<SelectListItem> CategoryList = _unitOfWork.CategoryRepository.GetAll()
-            .Select(u=>
-                new SelectListItem
-                {
-                    Text = u.Name, 
-                    Value = u.Id.ToString()
-                    
-                });
+
+        List<Product> objProductList = _unitOfWork.ProductRepository.GetAll(includeProperties:"Category").ToList();
+        
         
         return View(objProductList);
     }
@@ -47,16 +45,10 @@ public class ProductController : Controller
             Product = new Product()
         };
 
-        if (id == null || id == 0)
-        {
-            //create
-            return View(productVM);
-        }
-        else
+        if (id != null || id != 0)
         {
             //update
             productVM.Product = _unitOfWork.ProductRepository.Get(u => u.Id == id);
-            return View(productVM);
         }
         
         return View(productVM);
@@ -69,9 +61,43 @@ public class ProductController : Controller
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.ProductRepository.Add(obj.Product);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productPath = Path.Combine(wwwRootPath, @"images/product");
+
+                if (!string.IsNullOrEmpty(obj.Product.ImageUrl))
+                {
+                    //delete old image
+                    var oldImagePath = Path.Combine(wwwRootPath, obj.Product.ImageUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+
+                using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                } ;
+                
+                obj.Product.ImageUrl = @"images/product/" + fileName;
+            }
+
+            if (obj.Product.Id == 0)
+            {
+                _unitOfWork.ProductRepository.Add(obj.Product);
+                TempData["Message"] = "Product created successfully";
+            }
+            else
+            {
+                _unitOfWork.ProductRepository.Update(obj.Product);
+                TempData["Message"] = "Product updated successfully";
+            }
+            
             _unitOfWork.Save();
-            TempData["Message"] = "Product created successfully";
             return RedirectToAction("Index", "Product");
 
         }
