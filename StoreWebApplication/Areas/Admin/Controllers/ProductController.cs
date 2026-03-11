@@ -45,7 +45,7 @@ public class ProductController : Controller
             Product = new Product()
         };
 
-        if (id != null || id != 0)
+        if (id != null)
         {
             //update
             productVM.Product = _unitOfWork.ProductRepository.Get(u => u.Id == id);
@@ -105,34 +105,6 @@ public class ProductController : Controller
         return View();
     }
 
-    public IActionResult Delete(int? id)
-    {
-        if (id == null || id == 0)
-        {
-            return NotFound();
-        }
-
-        Product product = _unitOfWork.ProductRepository.Get(u=>u.Id==id);
-        if (product == null)
-        {
-            return NotFound();
-        }
-        
-        ProductVM productVM = new()
-        {
-            CategoryList =  _unitOfWork.CategoryRepository.GetAll()
-                .Select(u=>
-                    new SelectListItem
-                    {
-                        Text = u.Name, 
-                        Value = u.Id.ToString()
-                    
-                    }),
-            Product = product
-        };
-        return View(productVM);
-    }
-
     [HttpPost, ActionName("Delete")]
     public IActionResult DeletePOST(int? id)
     {
@@ -149,4 +121,44 @@ public class ProductController : Controller
         
         return RedirectToAction("Index");
     }
+
+    #region API CALLS
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        List<Product> objProductList = _unitOfWork.ProductRepository.GetAll(includeProperties:"Category").ToList();
+        return Json(new { data = objProductList });
+        
+    }
+    
+
+    [HttpDelete]
+    public IActionResult Delete(int? id)
+    {
+        var productToBeDeleted = _unitOfWork.ProductRepository.Get(u => u.Id == id);
+        if (productToBeDeleted == null)
+        {
+            return Json(new { success = false, message = "Error while deleting" });
+        }
+        string wwwRootPath = _webHostEnvironment.WebRootPath;
+        
+        var oldImagePath = Path.Combine(wwwRootPath, productToBeDeleted.ImageUrl.TrimStart('/'));
+        if (System.IO.File.Exists(oldImagePath))
+        {
+            System.IO.File.Delete(oldImagePath);
+        }
+        
+        _unitOfWork.ProductRepository.Remove(productToBeDeleted);
+        _unitOfWork.Save();
+        
+        TempData["Message"] = "Product deleted successfully";
+        
+        return Json(new { success = true, message = TempData["Message"] });
+        
+    }
+    
+
+    #endregion
+    
 }
